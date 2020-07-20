@@ -18,7 +18,7 @@ jobs:
       id: year-number
       run: "echo \"::set-output name=year::$(date +%Y)\""
     - name: Retrieve Upstream
-      run: git clone https://github.com/magento/magento2.git $GITHUB_WORKSPACE/../magento2
+      run: git clone -- depth 1 https://github.com/magento/magento2.git $GITHUB_WORKSPACE/../magento2
     - name: Update code
       run: |
         cd $GITHUB_WORKSPACE
