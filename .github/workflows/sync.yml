@@ -18,12 +18,12 @@ jobs:
       id: year-number
       run: "echo \"::set-output name=year::$(date +%Y)\""
     - name: Retrieve Upstream
-      run: git clone -- depth 1 https://github.com/magento/magento2.git $GITHUB_WORKSPACE/../magento2
+      run: git clone --depth 1 https://github.com/magento/magento2.git $GITHUB_WORKSPACE/../magento2
     - name: Update code
       run: |
         cd $GITHUB_WORKSPACE
         find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf
-        cp -r $GITHUB_WORKSPACE/../magento2/app/code/Magento/ReviewGraphQl/ .
+        cp -r $GITHUB_WORKSPACE/../magento2/app/code/Magento/ReviewGraphQl/. .
     - name: Push Changes
       run: |
               git config --global user.name ${{ github.repository_owner }}
